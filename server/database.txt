@@ -1,0 +1,13 @@
+1 /home/vigo/Desktop/Nguyet/client/ anh.jpeg 16777342 9090
+2 /home/vigo/Desktop/Nguyet/client/ anh.jpeg 16777344 9090
+4 /home/vigo/Desktop/Nguyet/client/ anh.jpeg 16777342 9090
+5 /home/vigo/Desktop/Nguyet/client/ anh.jpeg 16777341 9090
+6 /home/vigo/Desktop/Nguyet/client/ anh.jpeg 16777343 9091
+7 /home/vigo/Desktop/Nguyet/client/ anh.jpeg 16777343 9091
+8 /home/vigo/Desktop/Nguyet/client/ anh.jpeg 16777343 9091
+9 /home/vigo/Desktop/Nguyet/client/ anh.jpeg 16777343 9091
+10 /home/vigo/Desktop/Nguyet/client/ anh.jpeg 16777343 9091
+11 /home/vigo/Desktop/Nguyet/client/ anh.jpeg 16777343 9091
+12 /home/vigo/Desktop/Nguyet/client/ anh.jpeg 16777343 9091
+13 /home/vigo/Desktop/Nguyet/client/ anh.jpeg 16777343 9091
+14 /home/vigo/Desktop/Nguyet/client/ anh.jpeg 16777343 9091
