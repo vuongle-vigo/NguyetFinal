@@ -1,6 +1,5 @@
-
 #define _GNU_SOURCE
-#define TIMEOUT 500 //timeout after 500 seconds
+#define TIMEOUT 500
 
 # include <stdio.h>
 # include <string.h>
@@ -18,9 +17,9 @@
 # include <sys/poll.h>
 
 
-# include "FileInforStruct.h"
-# include "DatabaseHandle.h"
-# include "RequestHandle.h"
+# include "FileStruct.h"
+# include "DataBase.h"
+# include "Request.h"
 
 
 #define MAX_BUF_SIZE 1024
@@ -37,7 +36,7 @@ int sendData(int fd, char *buffer, int lenBuff);
 int gcount = 1;
 
 int main(int argc, char *argv[]){
-    FileShareInfor fileShareInfor = readDataBase(fileShareInfor);
+    FileInfor fileShareInfor = read_data(fileShareInfor);
     struct sockaddr_in caList[MAX_CONNECTIONS];
     int sockfd = setSock(HOST_NAME, PORT_NUMBER);
     listen(sockfd, 5);
@@ -71,7 +70,7 @@ int main(int argc, char *argv[]){
                 printf("disconnect:%d\n", pfd[i].fd);
                 deleteConnect(pfd[i].fd, pfd);
             }
-            else if(pfd[i].revents & POLLIN){ //incoming data from client
+            else if(pfd[i].revents & POLLIN){
                 char buffer[100] = {0};
                 int recv = recvData(pfd[i].fd, buffer, sizeof(buffer));
                 printf("%s\n", buffer);

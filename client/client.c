@@ -1,5 +1,5 @@
 #define _GNU_SOURCE
-#define TIMEOUT 500  // timeout after 50 seconds
+#define TIMEOUT 500
 
 # include <stdio.h>
 # include <string.h>
@@ -15,8 +15,8 @@
 # include <sys/stat.h>
 # include <time.h>
 # include <stdint.h>
-#include <sys/stat.h>   // stat
-#include <stdbool.h>    // bool type
+#include <sys/stat.h> 
+#include <stdbool.h> 
 
 # define HOST_NAME "127.0.0.1"
 
@@ -49,13 +49,12 @@ int main(int argc, char* argv[]){
         exit(1);
     }
     struct pollfd fds[4];
-    fds[0].fd = 0;
-    fds[0].events = POLLIN;
+    fds[0].fd = 0;    
+    fds[0].events = POLLIN;       
     fds[1].fd = sockfd;
     fds[1].events = POLLIN;
     fds[2].fd = sockfd_listen;
     fds[2].events = POLLIN | POLLPRI;
-
     while(1){
         loop:
         int ret = poll(fds, 4, TIMEOUT*1000);
@@ -67,7 +66,7 @@ int main(int argc, char* argv[]){
             printf("poll() timed out: %d\n", TIMEOUT);
             return 0;
         }
-        if(fds[1].revents & POLLIN){ // xu ly voi server
+        if(fds[1].revents & POLLIN){
             char buf[1024] = {0};
             int recv_count = recvData(fds[1].fd, buf, sizeof(buf));
             if(strncmp(buf, "$$", 2)==0){
@@ -121,7 +120,7 @@ int main(int argc, char* argv[]){
                     char portStr[10];
                     strcpy(portStr, argv[3]);
                     int len = strlen(portStr);
-                    for(int i = 0; i < 8 - len; i++){ //sizeof portStr = 8 bytes
+                    for(int i = 0; i < 8 - len; i++){ 
                         char tmp[8] = {0};
                         strcat(tmp, " ");
                         strcat(tmp, portStr);
@@ -155,7 +154,6 @@ int main(int argc, char* argv[]){
             while(!feof(fp)){
                 int read = fread(&ch, 1, 1, fp);
                 int sent = send(fds[3].fd, &ch, 1, 0);
-                count += sent;
             }
             done:
             fds[3].fd = 0;
@@ -254,7 +252,7 @@ int downloadFile(uint32_t ip, int port, char *filepath){
             break;
         }
         if(ret == 0){
-            perror("Download complete");
+            printf("Download complete\n");
             break;
         }
         if(fds.revents & POLLIN){
@@ -263,7 +261,7 @@ int downloadFile(uint32_t ip, int port, char *filepath){
             fputc(ch, fp);
         }
         if(fds.revents & POLLRDHUP){
-            printf("Connection closed...\n");
+            printf("Connection download closed...\n");
         }
     }
     fclose(fp);
